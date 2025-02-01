@@ -1,0 +1,57 @@
+const express = require("express")
+const app = express();
+const ExpressSession = require("express-session");
+const flash = require('connect-flash')
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+const cors = require('cors')
+app.use(cors());
+require("dotenv").config();
+
+app.use(ExpressSession({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+}))
+
+
+
+app.use(function(req, res, next) {
+    console.log('hello');
+    next();  // to move to the next middleware function
+})
+
+app.get('/create',function(req, res, next) {
+    req.session.name = 'John Doe';
+    res.send('Session created');
+})
+app.get('/check',function(req, res) {
+    console.log(req.session.name);
+})
+
+app.get('/', function(req, res) 
+{
+    res.send('Hello World!');
+})
+
+app.get('/home',function(req, res){
+    res.send('Welcome to the Home Page!');
+})
+
+app.get('/profile/:username',function(req, res){
+    res.send(req.params.username + ' s page');
+})
+
+app.get('/about',function(req, res){
+    res.send('About Page');
+})
+
+// if nothing works then this route will works
+app.get('*',function(req, res){
+    res.send('Not Found');
+})
+
+app.listen(process.env.PORT, function() 
+{
+    console.log('Server is running on port 3000');
+})
