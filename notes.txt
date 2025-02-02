@@ -1,3 +1,22 @@
+1) npm init --> to create package.json file which is the lekhajokha of the project.
+2) File system
+    write file => 
+    const fs = require('fs');
+    fs.writeFile('deep.txt','hey deep kaise ho',function(err){
+    if(err) console.log(err);
+    else console.log('File created successfully');
+})
+    append file
+    copy file
+    rename file
+    unlink file
+
+
+
+
+
+
+
 const express = require("express")
 const app = express();
 const ExpressSession = require("express-session");
@@ -55,3 +74,13 @@ app.listen(process.env.PORT, function()
 {
     console.log('Server is running on port 3000');
 })
+
+git init
+git add . 
+
+git  -main branch
+
+git remote add origin  
+
+
+git clone url_of_repo .

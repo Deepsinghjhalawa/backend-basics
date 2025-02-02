@@ -1,12 +1,5 @@
-const express  = require('express');
-const app = express();
-require('dotenv').config();
-app.set('view engine', 'ejs');
-
-app.get('/', (req, res) => {
-    res.render('home');
-});
-
-app.listen(process.env.PORT,function(){
-    console.log('Server is running on port ' + process.env.PORT);
+const fs = require('fs');
+fs.appendFile('deep.txt','me to accha hu',function(err){
+    if(err) console.log(err);
+    else console.log('File appended successfully');
 })
